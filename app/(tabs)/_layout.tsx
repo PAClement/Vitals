@@ -2,7 +2,8 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import {Tabs} from 'expo-router';
 import {useThemeColors} from "@/hooks/useThemeColors";
-import {View} from "react-native";
+import {View, Platform} from "react-native";
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 
 export default function TabLayout() {
     const colors = useThemeColors();
@@ -15,8 +16,26 @@ export default function TabLayout() {
                     title: '',
                     tabBarIcon: ({focused}) =>
                         <View style={{alignItems: 'center', justifyContent: 'center'}}>
-                            <Ionicons name="home" size={24} color={focused ? colors.primary : colors.text}/>
+                            <Ionicons name="home" size={24} color={focused ? colors.secondary : colors.text}/>
                         </View>,
+                }}
+            />
+            <Tabs.Screen
+                name="Friends"
+                options={{
+                    title: '',
+                    tabBarIcon: ({focused}) =>
+                        <View style={{
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            backgroundColor: colors.secondary,
+                            width: Platform.OS === 'ios' ? 50 : 60,
+                            height: Platform.OS === 'ios' ? 50 : 60,
+                            top: Platform.OS === 'ios' ? -10 : -20,
+                            borderRadius: Platform.OS === 'ios' ? 25 : 30,
+                        }}>
+                            <FontAwesome5 name="user-friends" size={24} color="white"/>
+                        </View>
                 }}
             />
             <Tabs.Screen
@@ -24,7 +43,7 @@ export default function TabLayout() {
                 options={{
                     title: '',
                     tabBarIcon: ({focused}) => <FontAwesome name="user-circle-o" size={24}
-                                                            color={focused ? colors.primary : colors.text}/>,
+                                                            color={focused ? colors.secondary : colors.text}/>,
                 }}
             />
             <Tabs.Screen
