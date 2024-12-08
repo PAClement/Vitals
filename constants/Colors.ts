@@ -2,7 +2,7 @@ export const Colors = {
     light: {
         primary: "#4b0082",
         secondary: "#5856D6",
-        text: "#000",
+        text: "#4f4f4f",
         grayWhite: "#efefef",
         white: "#fff",
         success: "#4CD964",
@@ -12,7 +12,7 @@ export const Colors = {
     dark: {
         primary: "#4b0082",
         secondary: "#5856D6",
-        text: "#000",
+        text: "#4f4f4f",
         grayWhite: "#efefef",
         white: "#fff",
         success: "#4CD964",
