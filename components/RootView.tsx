@@ -13,7 +13,7 @@ export default function RootView({style, children, ...rest}: Props) {
     return (
         <>
             <StatusBar style="dark"/>
-            <SafeAreaView style={[rootStyle, {backgroundColor: colors.white}]}>
+            <SafeAreaView style={[rootStyle, {backgroundColor: colors.white, padding: 12}]}>
                 {children}
             </SafeAreaView>
         </>
