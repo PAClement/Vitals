@@ -9,7 +9,9 @@ export default function TabLayout() {
     const colors = useThemeColors();
 
     return (
-        <Tabs screenOptions={{tabBarActiveTintColor: 'blue', headerShown: false}}>
+        <Tabs screenOptions={{tabBarActiveTintColor: 'blue', headerShown: false, animation: 'none',
+            tabBarShowLabel: false,
+            tabBarLabelPosition: 'beside-icon'}}>
             <Tabs.Screen
                 name="index"
                 options={{
