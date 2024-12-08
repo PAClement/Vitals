@@ -42,10 +42,6 @@ export default function Index() {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 10,
-    },
     header: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -57,7 +53,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     body: {
-        padding: 12,
         flex: 1,
     },
     gridGap: {
