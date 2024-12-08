@@ -1,6 +1,8 @@
 import {SafeAreaView} from "react-native-safe-area-context";
 import type {ViewProps, ViewStyle} from "react-native";
 import {useThemeColors} from "@/hooks/useThemeColors";
+import {StatusBar} from "expo-status-bar";
+import React from "react";
 
 type Props = ViewProps & {
     children?: React.ReactNode;
@@ -9,9 +11,12 @@ type Props = ViewProps & {
 export default function RootView({style, children, ...rest}: Props) {
     const colors = useThemeColors();
     return (
-        <SafeAreaView style={[rootStyle, {backgroundColor: colors.white}]}>
-            {children}
-        </SafeAreaView>
+        <>
+            <StatusBar style="dark"/>
+            <SafeAreaView style={[rootStyle, {backgroundColor: colors.white}]}>
+                {children}
+            </SafeAreaView>
+        </>
     );
 }
 
