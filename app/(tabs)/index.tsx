@@ -1,4 +1,4 @@
-import {FlatList, StyleSheet, View, Text, Animated} from "react-native";
+import {FlatList, StyleSheet, View} from "react-native";
 import {ThemedText} from "@/components/ThemedText";
 import {useThemeColors} from "@/hooks/useThemeColors";
 import {StatusCard} from "@/components/status/StatusCard";
@@ -7,7 +7,6 @@ import {Card} from "@/components/Card";
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Entypo from '@expo/vector-icons/Entypo';
 import RootView from "@/components/RootView";
-import {SafeAreaView} from "react-native-safe-area-context";
 
 export default function Index() {
     const colors = useThemeColors();
