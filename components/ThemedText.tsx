@@ -3,18 +3,13 @@ import {useThemeColors} from "@/hooks/useThemeColors";
 import {Colors} from "@/constants/Colors";
 
 const styles = StyleSheet.create({
-    body: {
-        fontSize: 10,
-        lineHeight: 16,
-    },
     headline: {
         fontSize: 24,
         lineHeight: 32,
     },
-    headlineBold: {
-        fontSize: 24,
-        lineHeight: 32,
-        fontWeight: 'bold',
+    body: {
+        fontSize: 10,
+        lineHeight: 16,
     },
     caption: {
         fontSize: 8,
@@ -23,17 +18,14 @@ const styles = StyleSheet.create({
     subtitle1: {
         fontSize: 14,
         lineHeight: 16,
-        fontWeight: 'bold',
     },
     subtitle2: {
         fontSize: 12,
         lineHeight: 16,
-        fontWeight: 'bold',
     },
     subtitle3: {
         fontSize: 10,
         lineHeight: 16,
-        fontWeight: 'bold',
     }
 })
 
