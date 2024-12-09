@@ -11,6 +11,20 @@ import RootView from "@/components/RootView";
 export default function Index() {
     const colors = useThemeColors();
 
+    const urgenceInfo = [{
+        title: 'Police Secours',
+        number: '17'
+    }, {
+        title: 'Pompier',
+        number: '18'
+    }, {
+        title: 'Samu',
+        number: '15'
+    }, {
+        title: 'Urgences',
+        number: '112'
+    }]
+
     const lists = Array.from({length: 9}, (_, k) => ({
         state: k % 2 === 0,
         id: k + 1
@@ -47,22 +61,12 @@ export default function Index() {
                 <View style={{marginVertical: 5}}>
                     <ThemedText variant="headline">Information d'urgence</ThemedText>
                     <Card style={{paddingVertical: 20, paddingHorizontal: 10, gap: 10}}>
-                        <View style={styles.urgentInfo}>
-                            <ThemedText variant='subtitle1' style={{fontWeight: 'bold'}}>Police Secours</ThemedText>
-                            <ThemedText variant='subtitle1'>17</ThemedText>
-                        </View>
-                        <View style={styles.urgentInfo}>
-                            <ThemedText variant='subtitle1' style={{fontWeight: 'bold'}}>Pompier</ThemedText>
-                            <ThemedText variant='subtitle1'>18</ThemedText>
-                        </View>
-                        <View style={styles.urgentInfo}>
-                            <ThemedText variant='subtitle1' style={{fontWeight: 'bold'}}>Samu</ThemedText>
-                            <ThemedText variant='subtitle1'>15</ThemedText>
-                        </View>
-                        <View style={styles.urgentInfo}>
-                            <ThemedText variant='subtitle1' style={{fontWeight: 'bold'}}>Urgences</ThemedText>
-                            <ThemedText variant='subtitle1'>112</ThemedText>
-                        </View>
+                        {urgenceInfo.map((item, index) => (
+                            <View key={index} style={styles.urgentInfo}>
+                                <ThemedText variant='subtitle1' style={{fontWeight: 'bold'}}>{item.title}</ThemedText>
+                                <ThemedText variant='subtitle1'>{item.number}</ThemedText>
+                            </View>
+                        ))}
                     </Card>
                 </View>
             </View>
