@@ -7,6 +7,7 @@ import {Card} from "@/components/Card";
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Entypo from '@expo/vector-icons/Entypo';
 import RootView from "@/components/RootView";
+import Row from "@/components/Row";
 
 export default function Index() {
     const colors = useThemeColors();
@@ -32,13 +33,13 @@ export default function Index() {
 
     return (
         <RootView>
-            <View style={styles.header}>
+            <Row style={styles.header} gap={16}>
                 <FontAwesome name="hand-peace-o" size={24} color="black"/>
                 <View>
                     <ThemedText variant="headline" color="primary">Bonjour</ThemedText>
                     <ThemedText variant="body" color="primary">John Doe</ThemedText>
                 </View>
-            </View>
+            </Row>
             <View style={[styles.body]}>
                 {/*Ur information*/}
                 <View style={{marginVertical: 20}}>
@@ -76,10 +77,7 @@ export default function Index() {
 
 const styles = StyleSheet.create({
     header: {
-        flexDirection: 'row',
-        alignItems: 'center',
         marginTop: 16,
-        gap: 16,
     },
     statusUserCard: {
         flexDirection: 'row',
