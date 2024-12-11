@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     popup: {
         position: 'absolute',
         width: '95%',
-        padding: 4,
+        padding: 12,
         borderRadius: 12,
         ...Shadows.dp2
     },
