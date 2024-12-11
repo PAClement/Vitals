@@ -6,12 +6,13 @@ import {useThemeColors} from "@/hooks/useThemeColors";
 type props = ModalProps & {
     isOpen: boolean;
     onClose: () => void;
+    position: "top" | "center" | "bottom";
 }
 
-export default function Modal({isOpen, onClose, children, ...rest}: props) {
+export default function Modal({isOpen, onClose, position, children, ...rest}: props) {
 
     const [isVisible, setIsVisible] = useState(false);
-    const [position, setPosition] = useState<null | { top: number, right: number }>(null)
+    const [windowPosition, setWindowPosition] = useState<null | { top?: number, right: number, bottom?: number }>(null)
 
     const colors = useThemeColors();
 
@@ -22,7 +23,17 @@ export default function Modal({isOpen, onClose, children, ...rest}: props) {
     const stateModal = (state: boolean) => {
         const {height} = Dimensions.get('window');
         if (state) {
-            setPosition({top: height / 2, right: 10});
+            switch (position) {
+                case "top":
+                    setWindowPosition({top: 10, right: 10});
+                    break;
+                case "center":
+                    setWindowPosition({top: height / 2, right: 10});
+                    break;
+                case "bottom":
+                    setWindowPosition({bottom: 10, right: 10});
+                    break;
+            }
         }
         setIsVisible(state);
     };
@@ -36,7 +47,7 @@ export default function Modal({isOpen, onClose, children, ...rest}: props) {
                 stateModal(false);
                 onClose();
             }}></Pressable>
-            <View style={[styles.popup, {backgroundColor: colors.white, ...position}]}>
+            <View style={[styles.popup, {backgroundColor: colors.white, ...windowPosition}]}>
                 {children}
             </View>
         </RNModal>
