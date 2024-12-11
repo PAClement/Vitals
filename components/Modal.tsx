@@ -12,7 +12,8 @@ type props = ModalProps & {
 export default function Modal({isOpen, onClose, position, children, ...rest}: props) {
 
     const [isVisible, setIsVisible] = useState(false);
-    const [windowPosition, setWindowPosition] = useState<null | { top?: number, right: number, bottom?: number }>(null)
+    const [windowPosition, setWindowPosition] =
+        useState<null | { top?: number, right: number, bottom?: number }>(null)
 
     const colors = useThemeColors();
 
