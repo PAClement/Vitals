@@ -32,7 +32,7 @@ export default function Friends() {
                     </Pressable>
                 </Row>
             </RootView>
-            <Modal isOpen={addFriendModal} onClose={closeAddFriendModal}>
+            <Modal isOpen={addFriendModal} onClose={closeAddFriendModal} position="center">
                 <ThemedText variant="subtitle1">Hello world</ThemedText>
             </Modal>
         </>
