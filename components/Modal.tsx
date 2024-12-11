@@ -1,4 +1,12 @@
-import {Dimensions, Modal as RNModal, ModalProps, Pressable, View, StyleSheet} from 'react-native';
+import {
+    Dimensions,
+    Modal as RNModal,
+    ModalProps,
+    Pressable,
+    View,
+    StyleSheet,
+    Keyboard
+} from 'react-native';
 import React, {useEffect, useState} from "react";
 import {Shadows} from "@/constants/Shadows";
 import {useThemeColors} from "@/hooks/useThemeColors";
@@ -13,30 +21,55 @@ export default function Modal({isOpen, onClose, position, children, ...rest}: pr
 
     const [isVisible, setIsVisible] = useState(false);
     const [windowPosition, setWindowPosition] =
-        useState<null | { top?: number, right: number, bottom?: number }>(null)
+        useState<null | { top?: number, right: number, bottom?: number }>(null);
+    const [viewHeight, setViewHeight] = useState(0);
 
     const colors = useThemeColors();
 
     useEffect(() => {
+        Keyboard.removeAllListeners('keyboardDidShow');
+        Keyboard.removeAllListeners('keyboardDidHide');
+
+        keyboardDidShow();
         stateModal(isOpen);
-    }, [isOpen]);
+    }, [isOpen, viewHeight]);
+
+    const keyboardDidShow = () => {
+        Keyboard.addListener("keyboardDidShow", () => {
+            setWindowPosition({top: 10, right: 10});
+
+        });
+        Keyboard.addListener("keyboardDidHide", () => {
+            setModalPosition(position);
+        });
+    }
 
     const stateModal = (state: boolean) => {
-        const {height} = Dimensions.get('window');
         if (state) {
-            switch (position) {
-                case "top":
-                    setWindowPosition({top: 10, right: 10});
-                    break;
-                case "center":
-                    setWindowPosition({top: height / 2, right: 10});
-                    break;
-                case "bottom":
-                    setWindowPosition({bottom: 10, right: 10});
-                    break;
-            }
+            setModalPosition(position);
         }
         setIsVisible(state);
+    };
+
+    const setModalPosition = (pos: string) => {
+        const {height} = Dimensions.get('window');
+
+        switch (pos) {
+            case "top":
+                setWindowPosition({top: 10, right: 10});
+                break;
+            case "center":
+                setWindowPosition({top: (height / 2 - (viewHeight / 2)), right: 10});
+                break;
+            case "bottom":
+                setWindowPosition({bottom: 10, right: 10});
+                break;
+        }
+    }
+
+    const handleLayout = (event: { nativeEvent: { layout: { height: number; }; }; }) => {
+        const {height} = event.nativeEvent.layout;
+        setViewHeight(height);
     };
 
     return (
@@ -48,7 +81,7 @@ export default function Modal({isOpen, onClose, position, children, ...rest}: pr
                 stateModal(false);
                 onClose();
             }}></Pressable>
-            <View style={[styles.popup, {backgroundColor: colors.white, ...windowPosition}]}>
+            <View onLayout={handleLayout} style={[styles.popup, {backgroundColor: colors.white, ...windowPosition}]}>
                 {children}
             </View>
         </RNModal>
