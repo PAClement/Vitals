@@ -1,14 +1,17 @@
 import {ThemedText} from "@/components/ThemedText";
 import RootView from "@/components/RootView";
-import {Pressable, StyleSheet, View, Modal} from "react-native";
+import {Pressable, StyleSheet} from "react-native";
+import Modal from "@/components/Modal";
 import {useThemeColors} from "@/hooks/useThemeColors";
 import AntDesign from '@expo/vector-icons/AntDesign';
 import {useState} from "react";
+import Row from "@/components/Row";
 import React from "react";
 
 export default function Friends() {
-    const colors = useThemeColors();
     const [addFriendModal, setAddFriendModal] = useState(false);
+
+    const colors = useThemeColors();
 
     const openAddFriendModal = () => {
         setAddFriendModal(true);
@@ -21,19 +24,16 @@ export default function Friends() {
     return (
         <>
             <RootView>
-                <View style={styles.header}>
+                <Row style={styles.header}>
                     <ThemedText variant="headline">Amis</ThemedText>
                     <Pressable onPress={openAddFriendModal}
                                style={[styles.addFriendButton, {backgroundColor: colors.secondary}]}>
                         <AntDesign name="adduser" size={24} color={colors.white}/>
                     </Pressable>
-                </View>
+                </Row>
             </RootView>
-            <Modal transparent visible={addFriendModal} onRequestClose={closeAddFriendModal}>
-                <Pressable style={styles.backdrop} onPress={closeAddFriendModal}></Pressable>
-                <View style={[styles.popup, {backgroundColor: colors.white}]}>
-                    <ThemedText variant="subtitle1">Hello world</ThemedText>
-                </View>
+            <Modal isOpen={addFriendModal} onClose={closeAddFriendModal}>
+                <ThemedText variant="subtitle1">Hello world</ThemedText>
             </Modal>
         </>
 
@@ -42,22 +42,10 @@ export default function Friends() {
 
 const styles = StyleSheet.create({
     header: {
-        flexDirection: 'row',
-        alignItems: 'center',
         justifyContent: 'space-between',
     },
     addFriendButton: {
         padding: 8,
         borderRadius: 50,
     },
-    popup: {
-        padding: 4,
-        paddingTop: 16,
-        gap: 8,
-        borderRadius: 12
-    },
-    backdrop: {
-        flex: 1,
-        backgroundColor: 'rgba(0,0,0,0.5)',
-    }
 });
