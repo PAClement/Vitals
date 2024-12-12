@@ -3,7 +3,6 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import Row from "@/components/Row";
 import {useThemeColors} from "@/hooks/useThemeColors";
 import Entypo from '@expo/vector-icons/Entypo';
-import {useState} from "react";
 
 type Props = {
     value: string;
