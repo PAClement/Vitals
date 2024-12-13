@@ -40,7 +40,7 @@ export default function Friends() {
                         <SearchBar value={searchFriend} onChange={setSearchFriend}></SearchBar>
                     </Row>
                 </View>
-                <View style={{gap:30}}>
+                <View style={{gap: 30}}>
                     <View style={{gap: 10}}>
                         <ThemedText variant="subtitle1">Demande en attente</ThemedText>
                         <Row>
