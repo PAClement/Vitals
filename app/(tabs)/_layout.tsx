@@ -1,6 +1,7 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import AntDesign from '@expo/vector-icons/AntDesign';
+import Feather from '@expo/vector-icons/Feather';
 import {Tabs} from 'expo-router';
 import {useThemeColors} from "@/hooks/useThemeColors";
 import {View, Platform} from "react-native";
@@ -23,6 +24,15 @@ export default function TabLayout() {
                         <View style={{alignItems: 'center', justifyContent: 'center'}}>
                             <Ionicons name="home" size={24} color={focused ? colors.secondary : colors.text}/>
                         </View>
+                }}
+            />
+
+            <Tabs.Screen
+                name="Triggers"
+                options={{
+                    title: '',
+                    tabBarIcon: ({focused}) => <Feather name="alert-circle" size={24}
+                                                        color={focused ? colors.secondary : colors.text}/>,
                 }}
             />
 
@@ -52,6 +62,7 @@ export default function TabLayout() {
                                                             color={focused ? colors.secondary : colors.text}/>,
                 }}
             />
+
             <Tabs.Screen
                 name="Settings"
                 options={{
@@ -60,6 +71,7 @@ export default function TabLayout() {
                                                           color={focused ? colors.secondary : colors.text}/>,
                 }}
             />
+
             <Tabs.Screen
                 name="user/[id]"
                 options={{
