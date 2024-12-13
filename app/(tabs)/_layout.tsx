@@ -1,5 +1,6 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import AntDesign from '@expo/vector-icons/AntDesign';
 import {Tabs} from 'expo-router';
 import {useThemeColors} from "@/hooks/useThemeColors";
 import {View, Platform} from "react-native";
@@ -12,7 +13,7 @@ export default function TabLayout() {
         <Tabs screenOptions={{
             headerShown: false, animation: 'none',
             tabBarShowLabel: false,
-            tabBarLabelPosition: 'beside-icon'
+            tabBarLabelPosition: 'beside-icon',
         }}>
             <Tabs.Screen
                 name="index"
@@ -21,9 +22,10 @@ export default function TabLayout() {
                     tabBarIcon: ({focused}) =>
                         <View style={{alignItems: 'center', justifyContent: 'center'}}>
                             <Ionicons name="home" size={24} color={focused ? colors.secondary : colors.text}/>
-                        </View>,
+                        </View>
                 }}
             />
+
             <Tabs.Screen
                 name="Friends"
                 options={{
@@ -48,6 +50,14 @@ export default function TabLayout() {
                     title: '',
                     tabBarIcon: ({focused}) => <FontAwesome name="user-circle-o" size={24}
                                                             color={focused ? colors.secondary : colors.text}/>,
+                }}
+            />
+            <Tabs.Screen
+                name="Settings"
+                options={{
+                    title: '',
+                    tabBarIcon: ({focused}) => <AntDesign name="setting" size={24}
+                                                          color={focused ? colors.secondary : colors.text}/>,
                 }}
             />
             <Tabs.Screen
