@@ -1,4 +1,4 @@
-import {Button, Pressable, StyleSheet, ViewStyle} from "react-native";
+import {Pressable, StyleSheet} from "react-native";
 import Row from "@/components/Row";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import {ThemedText} from "@/components/ThemedText";
@@ -9,24 +9,23 @@ import ButtonManageFriends from "@/components/friend/ButtonManageFriends";
 
 type Props = {
     id: number,
-    state: string
+    state: 'process' | 'accepted' | 'blocked'
 }
-
 
 export default function FriendCard({id, state}: Props) {
     const colors = useThemeColors();
 
-    return <Card style={[styles.Card]}>
+    return <Card style={[styles.Card, (state === 'process') && {borderWidth: 1, borderColor: colors.warning}]}>
         <Row style={{justifyContent: 'space-between'}}>
             <Row gap={8}>
                 <AntDesign name="user" size={24} color={colors.secondary}/>
-                <ThemedText variant="subtitle1">Friend's name</ThemedText>
+                <ThemedText variant="subtitle1">Friend's name </ThemedText>
             </Row>
             {state === 'process' ? (
                 <Row gap={8}>
-                    <ButtonManageFriends id={1} state={'accepted'} title={'Accepter'} color={colors.success}
+                    <ButtonManageFriends id={id} state={'accepted'} title={'Accepter'} color={colors.success}
                                          accessibilityLabel={"Accepter la demande d'amis"}/>
-                    <ButtonManageFriends id={48} state={'reject'} title={'Rejeter'} color={colors.warning}
+                    <ButtonManageFriends id={id} state={'reject'} title={'Rejeter'} color={colors.warning}
                                          accessibilityLabel={"Rejeter la demande d'amis"}/>
                 </Row>
             ) : (
@@ -46,5 +45,5 @@ const styles = StyleSheet.create({
     },
     actionButton: {
         fontSize: 12
-    }
+    },
 });
