@@ -5,6 +5,7 @@ import {Pressable, StyleSheet, Image, View} from "react-native";
 import Row from "@/components/Row";
 import {useThemeColors} from "@/hooks/useThemeColors";
 import {Card} from "@/components/Card";
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 export default function Index() {
     const colors = useThemeColors();
@@ -29,6 +30,9 @@ export default function Index() {
                         borderRadius: 100,
                         gap: 10,
                     }}>
+                        <View style={styles.addPhotoIcon}>
+                            <MaterialIcons name="add-a-photo" size={16} color={colors.secondary}/>
+                        </View>
                         <Image source={require("@/assets/images/user-account.png")} style={{
                             height: 100,
                             width: 100,
@@ -70,5 +74,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         gap: 10
+    },
+    addPhotoIcon: {
+        position: 'absolute',
+        width: 30,
+        right: 0,
     }
 })
