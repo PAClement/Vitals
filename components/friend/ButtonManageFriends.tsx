@@ -13,12 +13,21 @@ export default function ButtonManageFriends({id, state, title, color, accessibil
     const actionButton = () => {
         switch (state) {
             case "accepted":
-                console.log("Accepted " + id);
+                acceptFriendRequest(id);
                 break;
             case "reject":
-                console.log("Reject " + id);
+                rejectFriendRequest(id);
                 break;
         }
+    }
+
+    const acceptFriendRequest = (id: number) => {
+        console.log("Accepted " + id);
+
+    }
+
+    const rejectFriendRequest = (id: number) => {
+        console.log("Reject " + id);
     }
 
     return (
