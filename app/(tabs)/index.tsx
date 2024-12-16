@@ -9,6 +9,8 @@ import Entypo from '@expo/vector-icons/Entypo';
 import RootView from "@/components/RootView";
 import Row from "@/components/Row";
 
+import Ionicons from '@expo/vector-icons/Ionicons';
+
 export default function Index() {
     const colors = useThemeColors();
 
@@ -33,12 +35,15 @@ export default function Index() {
 
     return (
         <RootView>
-            <Row style={styles.header} gap={16}>
-                <FontAwesome name="hand-peace-o" size={24} color="black"/>
-                <View>
-                    <ThemedText variant="headline" color="primary">Bonjour</ThemedText>
-                    <ThemedText variant="body" color="primary">John Doe</ThemedText>
-                </View>
+            <Row style={{justifyContent: 'space-between'}}>
+                <Row style={styles.header} gap={16}>
+                    <FontAwesome name="hand-peace-o" size={24} color="black"/>
+                    <View>
+                        <ThemedText variant="headline" color="primary">Bonjour</ThemedText>
+                        <ThemedText variant="body" color="primary">John Doe</ThemedText>
+                    </View>
+                </Row>
+                <Ionicons name="notifications" size={24} color={colors.secondary}/>
             </Row>
             <View style={[styles.body]}>
                 {/*Ur information*/}
