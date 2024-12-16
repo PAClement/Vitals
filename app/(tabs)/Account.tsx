@@ -15,13 +15,6 @@ export default function Index() {
         {name: "email", data: "doe.john@example.com"},
     ];
 
-    const userUrgenceInfo = [
-        {name: 'Police Secours', data: '17'},
-        {name: 'Pompier', data: '18'},
-        {name: 'Samu', data: '15'},
-        {name: 'Urgences', data: '112'}
-    ];
-
     return (
         <RootView isPadding={false}>
             <View style={{paddingHorizontal: 12, paddingTop: 12, backgroundColor: colors.grayWhite}}>
@@ -51,15 +44,6 @@ export default function Index() {
                     <ThemedText variant="headline">Vos informations</ThemedText>
                     <Card style={{padding: 15, gap: 5}}>
                         {userInfo.map((item, index) => (
-                            <View key={index} style={styles.userInfo}>
-                                <ThemedText variant='subtitle1' style={{fontWeight: 'bold'}}>{item.name}</ThemedText>
-                                <ThemedText variant='subtitle1'>{item.data}</ThemedText>
-                            </View>
-                        ))}
-                    </Card>
-                    <ThemedText variant="headline">Urgences Informations</ThemedText>
-                    <Card style={{padding: 15, gap: 5}}>
-                        {userUrgenceInfo.map((item, index) => (
                             <View key={index} style={styles.userInfo}>
                                 <ThemedText variant='subtitle1' style={{fontWeight: 'bold'}}>{item.name}</ThemedText>
                                 <ThemedText variant='subtitle1'>{item.data}</ThemedText>
