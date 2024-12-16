@@ -6,14 +6,15 @@ import React from "react";
 
 type Props = ViewProps & {
     children?: React.ReactNode;
+    isPadding?: boolean;
 };
 
-export default function RootView({style, children, ...rest}: Props) {
+export default function RootView({style, children, isPadding = true, ...rest}: Props) {
     const colors = useThemeColors();
     return (
         <>
             <StatusBar style="dark"/>
-            <SafeAreaView style={[rootStyle, {backgroundColor: colors.white, padding: 12}, style]}>
+            <SafeAreaView style={[rootStyle, {backgroundColor: colors.white, padding: isPadding ? 15 : 0}, style]}>
                 {children}
             </SafeAreaView>
         </>
@@ -22,5 +23,4 @@ export default function RootView({style, children, ...rest}: Props) {
 
 const rootStyle = {
     flex: 1,
-    padding: 10,
 } satisfies ViewStyle
