@@ -37,7 +37,7 @@ export default function TabLayout() {
             />
 
             <Tabs.Screen
-                name="Friends"
+                name="Account"
                 options={{
                     title: '',
                     tabBarIcon: ({focused}) =>
@@ -50,15 +50,15 @@ export default function TabLayout() {
                             top: Platform.OS === 'ios' ? -10 : -20,
                             borderRadius: Platform.OS === 'ios' ? 25 : 30,
                         }}>
-                            <FontAwesome5 name="user-friends" size={24} color="white"/>
+                            <FontAwesome name="user-circle-o" size={24} color="white"/>
                         </View>
                 }}
             />
             <Tabs.Screen
-                name="Account"
+                name="Friends"
                 options={{
                     title: '',
-                    tabBarIcon: ({focused}) => <FontAwesome name="user-circle-o" size={24}
+                    tabBarIcon: ({focused}) => <FontAwesome5 name="user-friends" size={24}
                                                             color={focused ? colors.secondary : colors.text}/>,
                 }}
             />
