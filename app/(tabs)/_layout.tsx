@@ -50,7 +50,7 @@ export default function TabLayout() {
                             top: Platform.OS === 'ios' ? -10 : -20,
                             borderRadius: Platform.OS === 'ios' ? 25 : 30,
                         }}>
-                            <FontAwesome name="user-circle-o" size={24} color="white"/>
+                            <FontAwesome name="user" size={24} color="white"/>
                         </View>
                 }}
             />
