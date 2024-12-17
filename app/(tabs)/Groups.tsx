@@ -2,11 +2,11 @@ import RootView from "@/components/RootView";
 import Row from "@/components/Row";
 import {ThemedText} from "@/components/ThemedText";
 
-export default function Triggers() {
+export default function Groups() {
     return (
         <RootView>
             <Row>
-                <ThemedText>Triggers</ThemedText>
+                <ThemedText>Groups</ThemedText>
             </Row>
         </RootView>
     )

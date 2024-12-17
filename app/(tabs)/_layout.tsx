@@ -28,11 +28,11 @@ export default function TabLayout() {
             />
 
             <Tabs.Screen
-                name="Triggers"
+                name="Groups"
                 options={{
                     title: '',
-                    tabBarIcon: ({focused}) => <Feather name="alert-circle" size={24}
-                                                        color={focused ? colors.secondary : colors.text}/>,
+                    tabBarIcon: ({focused}) => <FontAwesome5 name="layer-group" size={24}
+                                                             color={focused ? colors.secondary : colors.text}/>,
                 }}
             />
 
@@ -59,7 +59,7 @@ export default function TabLayout() {
                 options={{
                     title: '',
                     tabBarIcon: ({focused}) => <FontAwesome5 name="user-friends" size={24}
-                                                            color={focused ? colors.secondary : colors.text}/>,
+                                                             color={focused ? colors.secondary : colors.text}/>,
                 }}
             />
 
