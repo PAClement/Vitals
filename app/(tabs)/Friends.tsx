@@ -17,21 +17,13 @@ export default function Friends() {
 
     const colors = useThemeColors();
 
-    const openAddFriendModal = () => {
-        setAddFriendModal(true);
-    };
-
-    const closeAddFriendModal = () => {
-        setAddFriendModal(false);
-    }
-
     return (
         <>
             <RootView>
                 <View style={{marginBottom: 15}}>
                     <Row style={[styles.header, {marginBottom: 15}]}>
                         <ThemedText variant="headline">Vos proches</ThemedText>
-                        <Pressable onPress={openAddFriendModal}
+                        <Pressable onPress={() => setAddFriendModal(true)}
                                    style={[styles.addFriendButton, {backgroundColor: colors.secondary}]}>
                             <AntDesign name="adduser" size={24} color={colors.white}/>
                         </Pressable>
@@ -55,7 +47,7 @@ export default function Friends() {
                     </View>
                 </View>
             </RootView>
-            <Modal isOpen={addFriendModal} onClose={closeAddFriendModal} position="center">
+            <Modal isOpen={addFriendModal} onClose={() => setAddFriendModal(false)} position="center">
                 <ThemedText variant="subtitle1">Ajouter</ThemedText>
                 <Row>
                     <SearchBar value={searchAddFriend} onChange={setSearchAddFriend}></SearchBar>
