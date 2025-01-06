@@ -1,22 +1,16 @@
-import { router } from 'expo-router';
+import {router} from 'expo-router';
 import {Button, Text, View} from 'react-native';
 
-import { useSession } from '@/ctx';
+import {useSession} from '@/ctx';
 
 export default function SignIn() {
-    const { signIn } = useSession();
+    const {signIn} = useSession();
     return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text
-                onPress={() => {
-                    signIn();
-                    // Navigate after signing in. You may want to tweak this to ensure sign-in is
-                    // successful before navigating.
-                    router.replace('/');
-                }}>
-                Sign In
-            </Text>
-            <Button title={'Click to login'}></Button>
+        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            <Button onPress={() => {
+                signIn();
+                router.replace('/');
+            }} title={'Click to login'}></Button>
         </View>
     );
 }
