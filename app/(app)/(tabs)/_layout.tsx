@@ -1,7 +1,6 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import AntDesign from '@expo/vector-icons/AntDesign';
-import Feather from '@expo/vector-icons/Feather';
 import {Tabs} from 'expo-router';
 import {useThemeColors} from "@/hooks/useThemeColors";
 import {View, Platform} from "react-native";
