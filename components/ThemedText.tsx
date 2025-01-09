@@ -32,10 +32,14 @@ const styles = StyleSheet.create({
 type Props = TextProps & {
     variant?: keyof typeof styles,
     color?: keyof typeof Colors['light'],
+    align?: 'left' | 'right' | 'center' | 'justify',
 }
 
-export function ThemedText({variant, color, style, ...rest}: Props) {
+export function ThemedText({variant, color, align, style, ...rest}: Props) {
     const colors = useThemeColors();
 
-    return <Text style={[styles[variant ?? 'body'], {color: colors[color ?? 'primary']}, style]} {...rest} />
+    return <Text style={[styles[variant ?? 'body'], {
+        color: colors[color ?? 'primary'],
+        textAlign: align ?? 'left'
+    }, style]} {...rest} />
 }
