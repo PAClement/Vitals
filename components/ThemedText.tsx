@@ -3,6 +3,10 @@ import {useThemeColors} from "@/hooks/useThemeColors";
 import {Colors} from "@/constants/Colors";
 
 const styles = StyleSheet.create({
+    title: {
+        fontSize: 34,
+        lineHeight: 32,
+    },
     headline: {
         fontSize: 24,
         lineHeight: 32,
