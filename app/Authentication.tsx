@@ -20,9 +20,7 @@ export default function SignIn() {
     return (
         <RootView style={{gap: 15}}>
             <View style={styles.verticalCenter}>
-                <View>
-                    <ThemedText variant={"headline"} align={'center'}>Vitals</ThemedText>
-                </View>
+                <ThemedText variant={"headline"} align={'center'}>Vitals</ThemedText>
                 <View>
                     <TextInput keyboardType={'email-address'} inputMode={'email'} style={styles.input}
                                placeholder={'Email'}></TextInput>
@@ -32,7 +30,7 @@ export default function SignIn() {
                         <Button onPress={FormSignIn} title={'Click to login'}></Button>
                     </View>
                 </View>
-                <ThemedText variant={"subtitle1"} align={'center'}>Pas encore de compte ? </ThemedText>
+                <ThemedText variant={"subtitle1"} align={'center'}>Pas encore de compte ?</ThemedText>
             </View>
         </RootView>
     );
@@ -47,7 +45,7 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     verticalCenter: {
-        justifyContent: 'space-between',
-        height: '100%',
+        justifyContent: 'space-around',
+        height: '100%'
     }
 });
