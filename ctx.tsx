@@ -1,13 +1,13 @@
-import { useContext, createContext, type PropsWithChildren } from 'react';
-import { useStorageState } from './useStorageState';
+import {useContext, createContext, type PropsWithChildren} from 'react';
+import {useStorageState} from './useStorageState';
 
 const AuthContext = createContext<{
-    signIn: () => void;
+    signIn: (jwt: string) => void;
     signOut: () => void;
     session?: string | null;
     isLoading: boolean;
 }>({
-    signIn: () => null,
+    signIn: (jwt: string) => null,
     signOut: () => null,
     session: null,
     isLoading: false,
@@ -25,15 +25,15 @@ export function useSession() {
     return value;
 }
 
-export function SessionProvider({ children }: PropsWithChildren) {
+export function SessionProvider({children}: PropsWithChildren) {
     const [[isLoading, session], setSession] = useStorageState('session');
 
     return (
         <AuthContext.Provider
             value={{
-                signIn: () => {
+                signIn: (jwt: string) => {
                     // Perform sign-in logic here
-                    setSession('xxx');
+                    setSession(jwt);
                 },
                 signOut: () => {
                     setSession(null);
