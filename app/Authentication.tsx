@@ -1,49 +1,43 @@
-import {router} from 'expo-router';
-import {Button, StyleSheet, TextInput, View} from 'react-native';
-
-import {useSession} from '@/ctx';
+import {StyleSheet, View} from 'react-native';
 import RootView from "@/components/RootView";
 import {ThemedText} from "@/components/ThemedText";
+import SignIn from "@/components/authentication/SignIn";
+import SignUp from "@/components/authentication/SignUp";
+import {useState} from "react";
 
-export default function SignIn() {
-    const {signIn, session} = useSession();
-
-    const FormSignIn = () => {
-
-        //Jwt test (api token)
-        const jwt = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEyMzQ1Njc4OTAiLCJmaXJzdG5hbWUiOiJKb2huIiwibGFzdG5hbWUiOiJEb2UiLCJpYXQiOjE3MzgxNDQ3MzIsImV4cCI6MTgzODI1MDAwMH0.Uv8kZbDQQix0rgmI5i2G2sw1dVQUvtYY_9mLrUjgyWo'
-
-        signIn(jwt);
-        router.replace('/');
-    };
+export default function Authentication() {
+    const [formState, setFormState] = useState('signIn');
 
     return (
         <RootView style={{gap: 15}}>
             <View style={styles.verticalCenter}>
-                <ThemedText variant={"headline"} align={'center'}>Vitals</ThemedText>
+                <ThemedText variant={"title"} align={'center'}>Vitals</ThemedText>
                 <View>
-                    <TextInput keyboardType={'email-address'} inputMode={'email'} style={styles.input}
-                               placeholder={'Email'}></TextInput>
-                    <TextInput keyboardType={'default'} inputMode={'text'} secureTextEntry={true} style={styles.input}
-                               placeholder={'Mot de passe'}></TextInput>
-                    <View style={{marginTop: 15}}>
-                        <Button onPress={FormSignIn} title={'Click to login'}></Button>
-                    </View>
+                    {formState === 'signIn' ? <SignIn/> : <SignUp/>}
                 </View>
-                <ThemedText variant={"subtitle1"} align={'center'}>Pas encore de compte ?</ThemedText>
+                <View>
+                    {formState === 'signIn' ? (
+                        <>
+                            <ThemedText variant={"subtitle1"} align={'center'} color={'text'}>Pas encore de compte
+                                ?</ThemedText>
+                            <ThemedText variant={"subtitle1"} align={'center'} onPress={() => setFormState('signOut')}>S'inscrire
+                                !</ThemedText>
+                        </>
+                    ) : (
+                        <>
+                            <ThemedText variant={"subtitle1"} align={'center'} color={'text'}>Déjà un compte
+                                ?</ThemedText>
+                            <ThemedText variant={"subtitle1"} align={'center'} onPress={() => setFormState('signIn')}>Se
+                                connecter !</ThemedText>
+                        </>
+                    )}
+                </View>
             </View>
         </RootView>
     );
 }
 
 const styles = StyleSheet.create({
-    input: {
-        borderWidth: 1,
-        borderColor: 'black',
-        borderRadius: 5,
-        padding: 10,
-        marginBottom: 10
-    },
     verticalCenter: {
         justifyContent: 'space-around',
         height: '100%'
