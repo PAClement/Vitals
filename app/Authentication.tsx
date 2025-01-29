@@ -19,14 +19,21 @@ export default function SignIn() {
 
     return (
         <RootView style={{gap: 15}}>
-            <ThemedText variant={"headline"} align={'center'}>Vitals</ThemedText>
-            <View>
-                <TextInput keyboardType={'email-address'} inputMode={'email'} style={styles.input}
-                           placeholder={'Email'}></TextInput>
-                <TextInput keyboardType={'default'} inputMode={'text'} secureTextEntry={true} style={styles.input}
-                           placeholder={'Mot de passe'}></TextInput>
+            <View style={styles.verticalCenter}>
+                <View>
+                    <ThemedText variant={"headline"} align={'center'}>Vitals</ThemedText>
+                </View>
+                <View>
+                    <TextInput keyboardType={'email-address'} inputMode={'email'} style={styles.input}
+                               placeholder={'Email'}></TextInput>
+                    <TextInput keyboardType={'default'} inputMode={'text'} secureTextEntry={true} style={styles.input}
+                               placeholder={'Mot de passe'}></TextInput>
+                    <View style={{marginTop: 15}}>
+                        <Button onPress={FormSignIn} title={'Click to login'}></Button>
+                    </View>
+                </View>
+                <ThemedText variant={"subtitle1"} align={'center'}>Pas encore de compte ? </ThemedText>
             </View>
-            <Button onPress={FormSignIn} title={'Click to login'}></Button>
         </RootView>
     );
 }
@@ -38,5 +45,9 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         padding: 10,
         marginBottom: 10
+    },
+    verticalCenter: {
+        justifyContent: 'space-between',
+        height: '100%',
     }
 });
