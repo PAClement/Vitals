@@ -6,7 +6,17 @@ import RootView from "@/components/RootView";
 import {ThemedText} from "@/components/ThemedText";
 
 export default function SignIn() {
-    const {signIn} = useSession();
+    const {signIn, session} = useSession();
+
+    const FormSignIn = () => {
+
+        //Jwt test (api token)
+        const jwt = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEyMzQ1Njc4OTAiLCJmaXJzdG5hbWUiOiJKb2huIiwibGFzdG5hbWUiOiJEb2UiLCJpYXQiOjE3MzgxNDQ3MzIsImV4cCI6MTgzODI1MDAwMH0.Uv8kZbDQQix0rgmI5i2G2sw1dVQUvtYY_9mLrUjgyWo'
+
+        signIn(jwt);
+        router.replace('/');
+    };
+
     return (
         <RootView style={{gap: 15}}>
             <ThemedText variant={"headline"} align={'center'}>Vitals</ThemedText>
@@ -16,10 +26,7 @@ export default function SignIn() {
                 <TextInput keyboardType={'default'} inputMode={'text'} secureTextEntry={true} style={styles.input}
                            placeholder={'Mot de passe'}></TextInput>
             </View>
-            <Button onPress={() => {
-                signIn();
-                router.replace('/');
-            }} title={'Click to login'}></Button>
+            <Button onPress={FormSignIn} title={'Click to login'}></Button>
         </RootView>
     );
 }
